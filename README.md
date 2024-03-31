@@ -5,7 +5,7 @@ Plugin version: paper 1.20.x
 Information on the sign will be:
 - "RIP" + the player name 
 - "Date" + the actual date
-- Why he is dead
+- Why the player is dead
 
  Like this
 
