@@ -24,8 +24,8 @@ public class SpawnDeathSign extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         getServer().getPluginManager().registerEvents(this, this);
-        getLogger().info("##########################################\n");
-        getLogger().info("SpawnDeathSign is ON\n");
+        getLogger().info("##########################################");
+        getLogger().info("SpawnDeathSign is ON");
         getLogger().info("##########################################");
     }
 
