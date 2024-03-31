@@ -5,5 +5,6 @@ The information on the sign will be:
 - "Date" + the actual date
 - Why he is dead
 
-  Like this
+ Like this
+
 ![Capture d’écran du 2024-03-31 21-47-54](https://github.com/vvcraft/SpawnDeathSign/assets/89702096/0dfb0159-60ad-4df6-9499-0de509883533)
