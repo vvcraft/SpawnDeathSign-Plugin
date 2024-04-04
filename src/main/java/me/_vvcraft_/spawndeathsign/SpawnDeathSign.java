@@ -5,19 +5,17 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 
 public class SpawnDeathSign extends JavaPlugin implements Listener {
 
@@ -27,7 +25,22 @@ public class SpawnDeathSign extends JavaPlugin implements Listener {
         getLogger().info("##########################################");
         getLogger().info("SpawnDeathSign is ON");
         getLogger().info("##########################################");
+
+        //Steup config
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
+
+        CustomConfig.setup();
+        CustomConfig.get().addDefault("First_line:", "RIP: ");
+        CustomConfig.get().addDefault("Second_line:", "date: ");
+        CustomConfig.get().addDefault("Third_line:", "death by: ");
+        CustomConfig.get().addDefault("fireworks:", "true");
+        CustomConfig.get().options().copyDefaults(true);
+        CustomConfig.save();
+
+        getCommand("reload").setExecutor(new ReloadCommand());
     }
+
 
     @Override
     public void onDisable() {
@@ -59,9 +72,7 @@ public class SpawnDeathSign extends JavaPlugin implements Listener {
         Entity killer = player.getKiller();
         String killerName = "Environnement";
         if (killer instanceof Player) {
-            killerName = ((Player) killer).getName();
-        } else if (killer != null) {
-            killerName = killer.getType().name();
+            killerName = killer.getName();
         }
 
         // Create the sign
@@ -83,11 +94,15 @@ public class SpawnDeathSign extends JavaPlugin implements Listener {
     private void createDeathSign(Location location, String playerName, String deathDate, String killerName) {
         location.getBlock().setType(Material.OAK_SIGN);
         Sign sign = (Sign) location.getBlock().getState();
-        sign.setLine(0, "RIP: " + playerName);
-        sign.setLine(1, "Date: " + deathDate);
-        sign.setLine(2, "death by:");
+
+        sign.setLine(0, CustomConfig.get().getString("First_line:") + playerName);
+        sign.setLine(1, CustomConfig.get().getString("Second_line:") + deathDate);
+        sign.setLine(2, CustomConfig.get().getString("Third_line:"));
         sign.setLine(3, killerName);
         sign.update();
+
+        if (CustomConfig.get().getString("fireworks:").equalsIgnoreCase("true")){
+            Bukkit.getWorld("world").spawnEntity(location, EntityType.FIREWORK);
+        }
     }
 }
-
