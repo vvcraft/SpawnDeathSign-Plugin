@@ -9,4 +9,5 @@ Information on the sign will be:
 
 You can change this information on the config file.
 
-![Capture d’écran du 2024-03-31 21-47-54](https://github.com/vvcraft/SpawnDeathSign/assets/89702096/0dfb0159-60ad-4df6-9499-0de509883533)
+![image](https://github.com/user-attachments/assets/431df39a-2155-499a-b42e-9f9df993a3c8)
+
