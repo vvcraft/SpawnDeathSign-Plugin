@@ -33,7 +33,7 @@ public class SpawnDeathSign extends JavaPlugin implements Listener {
         CustomConfig.setup();
         CustomConfig.get().addDefault("First_line:", "RIP: ");
         CustomConfig.get().addDefault("Second_line:", "date: ");
-        CustomConfig.get().addDefault("Third_line:", "death by: ");
+        CustomConfig.get().addDefault("Third_line:", "died by: ");
         CustomConfig.get().addDefault("fireworks:", "true");
         CustomConfig.get().options().copyDefaults(true);
         CustomConfig.save();
