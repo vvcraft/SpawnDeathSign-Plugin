@@ -1,6 +1,6 @@
 SpawnDeathSign is a Paper plugin for Minecraft that create a sign with some information at the player death.
 
-Plugin version: paper 1.20.x
+Plugin version: paper 1.20.x; 1.21.x
 
 Information on the sign will be:
 - "RIP" + the player name 
